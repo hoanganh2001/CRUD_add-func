@@ -5,6 +5,8 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogComponent } from 'src/app/dialog/dialog.component';
 import { ApiService } from 'src/app/services/api.service';
+import { DialogContentComponent } from '../dialog/dialogContent/dialogContent.component';
+import { DialogDetailComponent } from '../dialog/dialogDetail/dialogDetail.component';
 
 
 
@@ -21,7 +23,7 @@ export class HomeComponent implements OnInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private dialog : MatDialog, private api : ApiService){
+  constructor(private dialog : MatDialog, private api : ApiService,){
 
   }
   ngOnInit(): void {
@@ -49,6 +51,13 @@ export class HomeComponent implements OnInit {
       error:(err)=>{
         alert("Error while fetching the Records!");
       }
+    })
+  }
+
+  detail(row : any) {
+    this.dialog.open(DialogDetailComponent,{
+      width:'30%',
+      data:row
     })
   }
 

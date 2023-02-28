@@ -12,11 +12,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DialogModule } from '@angular/cdk/dialog';
 import { HomeComponent } from './home.component';
 import { MatInputModule } from '@angular/material/input';
 import { DialogComponent } from '../dialog/dialog.component';
 import { NotificationComponent } from './notification/notification.component';
+import { DialogModule } from '../dialog/dialog.module';
 
 
 @NgModule({

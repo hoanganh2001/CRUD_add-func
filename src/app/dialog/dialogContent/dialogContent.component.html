@@ -1,56 +1,94 @@
 <div mat-dialog-content>
   <form [formGroup]="productForm">
     <mat-form-field appearance="outline">
-    <mat-label>Product Name</mat-label>
-    <input  formControlName="productName" matInput placeholder="Name">
-    <mat-hint></mat-hint>
-    <mat-error *ngIf="productForm.controls['productName'].getError('required') ">
-      Product name is <strong>required</strong>
-    </mat-error>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Product Category</mat-label>
-    <mat-select formControlName="category" placeholder="Category">
-      <mat-option value="Fruits">Fruits</mat-option>
-      <mat-option value="Vegetable">Vegetable</mat-option>
-      <mat-option value="Electronic">Electronic</mat-option>
-    </mat-select>
-    <mat-hint></mat-hint>
-    <mat-error *ngIf="productForm.controls['category'].getError('required') ">
-      Category is <strong>required</strong>
-    </mat-error>  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Choose a date</mat-label>
-    <input formControlName="date" matInput [matDatepicker]="picker" >
-    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-    <mat-hint></mat-hint>
-    <mat-error *ngIf="productForm.controls['date'].getError('required')  ">
-      Date is <strong>required</strong>
-    </mat-error>  </mat-form-field>
-  <label for=""><h1>Product Freshness</h1></label>
-  <mat-radio-group formControlName="freshness" class="example-radio-group">
-    <mat-radio-button class="example-radio-button" *ngFor="let freshness of freshnessList" [value]="freshness">
-      {{freshness}}
-    </mat-radio-button>
-  </mat-radio-group>
-  <mat-form-field appearance="outline">
-    <mat-label>Price</mat-label>
-    <input formControlName="price" matInput type="number" placeholder="Price">
-    <mat-hint></mat-hint>
-    <mat-error *ngIf="productForm.controls['price'].getError('required') ">
-      Price is <strong>required</strong>
-    </mat-error>  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Comment</mat-label>
-    <textarea formControlName="comment" matInput></textarea>
-    <mat-hint></mat-hint>
-    <mat-error *ngIf="productForm.controls['comment'].getError('required') ">
-      Comment is <strong>required</strong>
-    </mat-error>  </mat-form-field>
-  <div mat-dialog-action [align]="'end'">
-    <button mat-raised-button color="warn" mat-dialog-close>Close</button>
-    <button style="margin-left: 8px;" mat-raised-button color="primary" (click)="addProduct()">{{actionBtn}}</button>
-  </div>
+      <mat-label>Product Name</mat-label>
+      <input formControlName="productName" matInput placeholder="Name" />
+      <mat-hint></mat-hint>
+      <mat-error
+        *ngIf="productForm.controls['productName'].getError('required')"
+      >
+        Product name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Product Category</mat-label>
+      <mat-select formControlName="category" placeholder="Category">
+        <mat-option value="Fruits">Fruits</mat-option>
+        <mat-option value="Vegetable">Vegetable</mat-option>
+        <mat-option value="Electronic">Electronic</mat-option>
+      </mat-select>
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="productForm.controls['category'].getError('required')">
+        Category is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Choose a date</mat-label>
+      <input formControlName="date" matInput [matDatepicker]="picker" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="productForm.controls['date'].getError('required')">
+        Date is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [rangePicker]="picker">
+        <input matStartDate placeholder="Start date" />
+        <input matEndDate placeholder="End date" />
+      </mat-date-range-input>
+      <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </mat-form-field>
+    <label for=""><h1>Product Freshness</h1></label>
+    <mat-radio-group formControlName="freshness" class="example-radio-group">
+      <mat-radio-button
+        class="example-radio-button"
+        *ngFor="let freshness of freshnessList"
+        [value]="freshness"
+      >
+        {{ freshness }}
+      </mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input
+        formControlName="price"
+        matInput
+        type="number"
+        placeholder="Price"
+      />
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="productForm.controls['price'].getError('required')">
+        Price is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Comment</mat-label>
+      <textarea formControlName="comment" matInput></textarea>
+      <mat-hint></mat-hint>
+      <mat-error *ngIf="productForm.controls['comment'].getError('required')">
+        Comment is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+    <div mat-dialog-action [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      <button
+        style="margin-left: 8px"
+        mat-raised-button
+        color="primary"
+        (click)="addProduct()"
+      >
+        {{ actionBtn }}
+      </button>
+    </div>
   </form>
 </div>

@@ -22,6 +22,10 @@ export class DialogContentComponent{
   freshnessList = ["Brand New", "Second Hand", "Refurbished"]
   actionBtn : string = "Save";
   productForm !: FormGroup;
+  range = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
   constructor(
     private formBuilder : FormBuilder,
     private api : ApiService,
