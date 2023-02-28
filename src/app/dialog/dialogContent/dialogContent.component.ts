@@ -1,8 +1,7 @@
-import { Component, Inject, OnInit, OnChanges } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { FormGroup, FormGroupDirective ,FormBuilder, Validators, FormControl, NgForm, FormControlName } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { NotificationComponent } from 'src/app/home/home/notification/notification/notification.component';
 import { ApiService } from 'src/app/services/api.service';
 import { DialogComponent } from '../dialog.component';
 
@@ -23,13 +22,11 @@ export class DialogContentComponent{
   freshnessList = ["Brand New", "Second Hand", "Refurbished"]
   actionBtn : string = "Save";
   productForm !: FormGroup;
-
   constructor(
     private formBuilder : FormBuilder,
     private api : ApiService,
     @Inject(MAT_DIALOG_DATA) public editData : any,
     private dialogRef : MatDialogRef<DialogComponent>,
-    private noti : NotificationComponent,
     )  {}
     validData(){
       this.productForm = this.formBuilder.group({
@@ -58,8 +55,7 @@ export class DialogContentComponent{
     if(!this.editData){
       if(this.productForm.valid){
         this.api.postProduct(this.productForm.value).subscribe({
-          next:(res)=>{
-            this.noti.showNoti;
+          next:()=>{
             this.productForm.reset();
             this.dialogRef.close('save');
           },
@@ -72,6 +68,8 @@ export class DialogContentComponent{
       this.updateProduct();
     }
   }
+
+
   updateProduct(){
     this.api.putProduct(this.productForm.value,this.editData.id)
     .subscribe({
@@ -85,5 +83,6 @@ export class DialogContentComponent{
       }
     })
   }
+
 
 }

@@ -3,56 +3,29 @@
     {
       "productName": "Apple",
       "category": "Fruits",
-      "freshness": "Refurbished",
-      "price": 2,
-      "comment": "fdsadsga",
-      "date": "2023-02-23T17:00:00.000Z",
+      "freshness": "Brand New",
+      "price": 1,
+      "comment": "fdsa",
+      "date": "2023-02-15T17:00:00.000Z",
       "id": 1
     },
     {
-      "productName": "Haha",
-      "category": "Fruits",
+      "productName": "Hahah",
+      "category": "Vegetable",
       "freshness": "Brand New",
       "price": 5,
-      "comment": "hahaha",
+      "comment": "sdsds",
       "date": "2023-02-26T17:00:00.000Z",
       "id": 2
     },
     {
-      "productName": "432",
-      "category": "Vegetable",
-      "freshness": "Refurbished",
-      "price": 3,
-      "comment": "gfsd",
-      "date": "2023-02-01T17:00:00.000Z",
+      "productName": "hahah",
+      "category": "Electronic",
+      "freshness": "Second Hand",
+      "price": 2,
+      "comment": "sấ",
+      "date": "2023-02-26T17:00:00.000Z",
       "id": 3
-    },
-    {
-      "productName": "342",
-      "category": "Fruits",
-      "freshness": "Brand New",
-      "price": 32,
-      "comment": "fgsd",
-      "date": "2023-02-02T17:00:00.000Z",
-      "id": 4
-    },
-    {
-      "productName": "123",
-      "category": "Vegetable",
-      "freshness": "Brand New",
-      "price": 3,
-      "comment": "trw",
-      "date": "0352-01-23T17:17:56.000Z",
-      "id": 5
-    },
-    {
-      "productName": "4",
-      "category": "Vegetable",
-      "freshness": "Refurbished",
-      "price": 4,
-      "comment": "hgfd",
-      "date": "2023-02-09T17:00:00.000Z",
-      "id": 6
     }
   ]
 }

@@ -6,10 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DialogModule } from './dialog/dialog.module';
-import { HomeModule } from './home/home/home.module';
-
-
-
+import { HomeModule } from './home/home.module';
 
 @NgModule({
   declarations: [AppComponent],

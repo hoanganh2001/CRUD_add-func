@@ -14,9 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { DialogComponent } from './dialog.component';
 import { DialogContentComponent } from './dialogContent/dialogContent.component';
-import { HomeComponent } from '../home/home/home.component';
 import { MatButtonModule } from '@angular/material/button';
-import { NotificationComponent } from '../home/home/notification/notification/notification.component';
 import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
@@ -35,6 +33,6 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule
   ],
   declarations: [DialogComponent, DialogContentComponent],
-  providers:[HomeComponent,NotificationComponent]
+  exports:[DialogContentComponent]
 })
 export class DialogModule { }

@@ -15,7 +15,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { DialogModule } from '@angular/cdk/dialog';
 import { HomeComponent } from './home.component';
 import { MatInputModule } from '@angular/material/input';
-import { NotificationComponent } from './notification/notification/notification.component';
+import { DialogComponent } from '../dialog/dialog.component';
+import { NotificationComponent } from './notification/notification.component';
 
 
 @NgModule({
@@ -31,9 +32,10 @@ import { NotificationComponent } from './notification/notification/notification.
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
+    MatInputModule,
     DialogModule,
-    MatInputModule
     ],
   declarations: [HomeComponent, NotificationComponent],
+  providers:[DialogComponent]
 })
 export class HomeModule {}

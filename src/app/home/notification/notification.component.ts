@@ -1,6 +1,6 @@
-import { style } from '@angular/animations';
-import { NgStyle } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, NgModule } from '@angular/core';
+import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { HomeComponent } from '../home.component';
 
 @Component({
   selector: 'app-notification',
@@ -24,21 +24,30 @@ import { Component, Input } from '@angular/core';
       font-size: 16px;
       font-weight: 500;
     }
+    .noti-hide {
+      display: none;
+    }
   `,
   ],})
 export class NotificationComponent  {
 
-  @Input() show!: String ;
+  @Input() isShow !: boolean;
   constructor(){}
   showNoti(){
-    console.log(111)
-    if (this.show == 'none') {
-      console.log(111)
-      this.show = 'block';
+    if (this.isShow === false ) {
+      this.isShow = true;
+      console.log(this.isShow);
+      setTimeout(()=>{
+        this.isShow = false;
+      }, 5000)
     } else {
-      this.show = 'none';
+      this.isShow = false;
     }
   }
-  ngOnInit(){}
+  ngOnInit() {
+    // if(this.dialogContent.act == "add") {
+    //   this.showNoti();
+    // }
+  }
 }
 
