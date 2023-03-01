@@ -14,6 +14,9 @@ export class ApiService {
   getProduct(){
     return this.http.get<any>("http://localhost:3000/productList/");
   }
+  getProductbyid(id : number){
+    return this.http.get<any>("http://localhost:3000/productList/"+id);
+  }
   putProduct(data : any, id : number){
     return this.http.put<any>("http://localhost:3000/productList/" + id,data)
   }

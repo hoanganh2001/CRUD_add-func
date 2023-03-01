@@ -14,9 +14,9 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HomeComponent } from './home.component';
 import { MatInputModule } from '@angular/material/input';
-import { DialogComponent } from '../dialog/dialog.component';
+import { DialogComponent } from '../home/dialog/dialog.component';
 import { NotificationComponent } from './notification/notification.component';
-import { DialogModule } from '../dialog/dialog.module';
+import { DialogModule } from '../home/dialog/dialog.module';
 
 
 @NgModule({

@@ -3,6 +3,7 @@ import { FormGroup, FormGroupDirective ,FormBuilder, Validators, FormControl, Ng
 import { ErrorStateMatcher } from '@angular/material/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from 'src/app/services/api.service';
+import { SpinnerService } from 'src/app/spinner/spinner.service';
 import { DialogComponent } from '../dialog.component';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -22,6 +23,7 @@ export class DialogContentComponent{
   freshnessList = ["Brand New", "Second Hand", "Refurbished"]
   actionBtn : string = "Save";
   productForm !: FormGroup;
+  act !: string;
   range = new FormGroup({
     start: new FormControl<Date | null>(null),
     end: new FormControl<Date | null>(null),
@@ -31,6 +33,7 @@ export class DialogContentComponent{
     private api : ApiService,
     @Inject(MAT_DIALOG_DATA) public editData : any,
     private dialogRef : MatDialogRef<DialogComponent>,
+    private spinner : SpinnerService
     )  {}
     validData(){
       this.productForm = this.formBuilder.group({
@@ -39,7 +42,8 @@ export class DialogContentComponent{
         freshness : ['Brand New',Validators.required],
         price : ['',Validators.required],
         comment : ['',Validators.required],
-        date : ['',Validators.required]
+        dateStart : ['',Validators.required],
+        dateEnd : ['',Validators.required]
       })
     }
     ngOnInit(): void{
@@ -49,7 +53,8 @@ export class DialogContentComponent{
       this.productForm.controls['productName'].setValue(this.editData.productName)
       this.productForm.controls['category'].setValue(this.editData.category)
       this.productForm.controls['freshness'].setValue(this.editData.freshness)
-      this.productForm.controls['date'].setValue(this.editData.date)
+      this.productForm.controls['dateStart'].setValue(this.editData.dateStart)
+      this.productForm.controls['dateEnd'].setValue(this.editData.dateEnd)
       this.productForm.controls['price'].setValue(this.editData.price)
       this.productForm.controls['comment'].setValue(this.editData.comment)
     }
@@ -58,12 +63,19 @@ export class DialogContentComponent{
   addProduct(){
     if(!this.editData){
       if(this.productForm.valid){
+        this.spinner.requestStart();
         this.api.postProduct(this.productForm.value).subscribe({
           next:()=>{
+            setTimeout(()=>{
+            this.spinner.requestEnd();
+            }, 2000);
+            this.act = 'add';
             this.productForm.reset();
             this.dialogRef.close('save');
+
           },
           error:()=>{
+            this.spinner.resetSpinner();
             alert("Error while add product!")
           }
         })
@@ -75,14 +87,16 @@ export class DialogContentComponent{
 
 
   updateProduct(){
+    this.spinner.requestStart();
     this.api.putProduct(this.productForm.value,this.editData.id)
     .subscribe({
       next:(res)=>{
-        alert("Product update Successfully");
+        this.spinner.requestEnd();
         this.productForm.reset();
         this.dialogRef.close('update');
       },
       error:()=>{
+        this.spinner.resetSpinner();
         alert("Error while updating the record!");
       }
     })

@@ -3,10 +3,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { DialogComponent } from 'src/app/dialog/dialog.component';
+import { DialogComponent } from 'src/app/home/dialog/dialog.component';
 import { ApiService } from 'src/app/services/api.service';
-import { DialogContentComponent } from '../dialog/dialogContent/dialogContent.component';
-import { DialogDetailComponent } from '../dialog/dialogDetail/dialogDetail.component';
+import { DialogContentComponent } from '../home/dialog/dialogContent/dialogContent.component';
+import { DialogDetailComponent } from '../home/dialog/dialogDetail/dialogDetail.component';
+import { SpinnerService } from '../spinner/spinner.service';
 
 
 
@@ -18,12 +19,13 @@ import { DialogDetailComponent } from '../dialog/dialogDetail/dialogDetail.compo
 export class HomeComponent implements OnInit {
 
   title = 'demo';
-  displayedColumns: string[] = ['productName', 'category', 'price', 'comment','date','freshness','action'];
+  displayedColumns: string[] = ['productName', 'category', 'price', 'comment','dateStart','dateEnd','freshness','action'];
   dataSource!: MatTableDataSource<any>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  constructor(private dialog : MatDialog, private api : ApiService,){
+  constructor(private dialog : MatDialog, private api : ApiService,
+   private spinner : SpinnerService){
 
   }
   ngOnInit(): void {
@@ -42,13 +44,18 @@ export class HomeComponent implements OnInit {
 
 
   getAllProducts() {
+    this.spinner.requestStart();
     this.api.getProduct().subscribe({
       next:(res)=>{
+        setTimeout(()=>{
+          this.spinner.requestEnd();
+        }, 2000)
         this.dataSource = new MatTableDataSource(res);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       },
       error:(err)=>{
+        this.spinner.resetSpinner();
         alert("Error while fetching the Records!");
       }
     })
@@ -74,12 +81,13 @@ export class HomeComponent implements OnInit {
 
 
   delProduct(row : any){
+    this.spinner.requestStart();
     this.api.deleteProduct(row.id).subscribe({
       next:(res)=>{
-        alert("Product delete Successfully")
+        this.spinner.requestEnd();
       },
       error:()=>{
-        alert("Error while deleting the record!");
+        this.spinner.resetSpinner();
       }
     });
     this.getAllProducts();

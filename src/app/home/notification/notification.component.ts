@@ -1,6 +1,4 @@
 import { Component, Input, NgModule } from '@angular/core';
-import { DialogComponent } from 'src/app/dialog/dialog.component';
-import { HomeComponent } from '../home.component';
 
 @Component({
   selector: 'app-notification',

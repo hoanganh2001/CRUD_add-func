@@ -1,0 +1,21 @@
+.mat-dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+h1{
+  margin: 0;
+}
+
+.btn-clear {
+  margin-right: 24px;
+  padding: 0;
+  min-width: 40px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 8px;
+}
+

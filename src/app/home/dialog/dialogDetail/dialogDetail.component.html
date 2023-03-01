@@ -1,0 +1,38 @@
+<div class="mat-dialog-header">
+  <h1 mat-dialog-title>DETAIL PRODUCT</h1>
+  <button mat-raised-button class="btn-clear">
+    <mat-icon style="margin-right: -4px">clear</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  <form [formGroup]="productForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Product Name</mat-label>
+      <input formControlName="productName" readonly matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <input formControlName="category" readonly matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Price</mat-label>
+      <input formControlName="price" readonly matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Start Date</mat-label>
+      <input formControlName="dateStart" readonly matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>End Date</mat-label>
+      <input formControlName="dateEnd" readonly matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Freshness</mat-label>
+      <input formControlName="freshness" readonly matInput />
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Comment</mat-label>
+      <input formControlName="comment" readonly matInput />
+    </mat-form-field>
+  </form>
+</div>

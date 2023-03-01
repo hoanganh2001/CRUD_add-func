@@ -1,31 +1,34 @@
 {
   "productList": [
     {
-      "productName": "Apple",
+      "productName": "123",
+      "category": "Vegetable",
+      "freshness": "Brand New",
+      "price": 32,
+      "comment": "fdsa",
+      "dateStart": "2023-03-17T17:00:00.000Z",
+      "dateEnd": null,
+      "id": 3
+    },
+    {
+      "productName": "Banana",
       "category": "Fruits",
       "freshness": "Brand New",
       "price": 1,
-      "comment": "fdsa",
-      "date": "2023-02-15T17:00:00.000Z",
-      "id": 1
+      "comment": "324",
+      "dateStart": "2023-03-17T17:00:00.000Z",
+      "dateEnd": "2023-03-21T17:00:00.000Z",
+      "id": 4
     },
     {
-      "productName": "Hahah",
-      "category": "Vegetable",
+      "productName": "1222",
+      "category": "Fruits",
       "freshness": "Brand New",
-      "price": 5,
-      "comment": "sdsds",
-      "date": "2023-02-26T17:00:00.000Z",
-      "id": 2
-    },
-    {
-      "productName": "hahah",
-      "category": "Electronic",
-      "freshness": "Second Hand",
-      "price": 2,
-      "comment": "sấ",
-      "date": "2023-02-26T17:00:00.000Z",
-      "id": 3
+      "price": 3,
+      "comment": "hhh",
+      "dateStart": "2023-02-28T17:00:00.000Z",
+      "dateEnd": "2023-02-28T17:00:00.000Z",
+      "id": 5
     }
   ]
 }
